@@ -18,7 +18,7 @@ function RegisterForm() {
     }
   }, [state, router]);
   return (
-    <div className="w-1/2">
+    <div className="w-full lg:w-1/2">
       <CustomForm action={formAction}>
         <h2 className="text-center text-3xl">Register</h2>
         <FormInput label={"fullName"} type={"text"} />

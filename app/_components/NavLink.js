@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-function NavLink({ href, title, other = false, image = false }) {
+function NavLink({ href, title, onClick, other = false, image = false }) {
   const pathname = usePathname();
   if (other) {
     return (
@@ -14,7 +14,11 @@ function NavLink({ href, title, other = false, image = false }) {
           pathname.startsWith(href) ? "text-primary-600" : ""
         } hover:text-primary-600 transition-all`}
       >
-        <Link href={href} className="flex justify-center items-center gap-2">
+        <Link
+          onClick={onClick}
+          href={href}
+          className="flex justify-center items-center gap-2"
+        >
           {image && (
             <div className="relative w-12 h-12">
               <Image

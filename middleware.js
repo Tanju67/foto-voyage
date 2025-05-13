@@ -7,9 +7,9 @@ export async function middleware(req) {
   const token = await getToken({ req, secret });
 
   // Token yoksa login sayfasına yönlendir
-  if (!token) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
+  // if (!token) {
+  //   return NextResponse.redirect(new URL("/login", req.url));
+  // }
 
   // Token varsa devam et
   return NextResponse.next();

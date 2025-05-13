@@ -1,12 +1,12 @@
-// app/_lib/cloudinary.js
-import { v2 as cloudinary } from "cloudinary";
+export async function getCloudinary() {
+  const cloudinaryModule = await import("cloudinary");
+  const cloudinary = cloudinaryModule.v2;
 
-if (!cloudinary.configured) {
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
   });
-}
 
-export default cloudinary;
+  return cloudinary;
+}

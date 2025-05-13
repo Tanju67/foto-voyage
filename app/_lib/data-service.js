@@ -1,4 +1,4 @@
-import { v2 as cloudinary } from "cloudinary";
+import { getCloudinary } from "@/app/_lib/cloudinary";
 import User from "@/app/_models/user";
 import connectDB from "./db";
 import Post from "../_models/post";
@@ -76,6 +76,7 @@ export async function getUserById(userId) {
 }
 
 export async function uploadImageToCloudinary(imageFile, oldImageUrl) {
+  const cloudinary = await getCloudinary();
   try {
     if (oldImageUrl) {
       // Eski fotoğrafı Cloudinary'den sil
@@ -144,6 +145,7 @@ export async function createPost(postData) {
 }
 
 export async function uploadPostImageToCloudinary(imageFile) {
+  const cloudinary = await getCloudinary();
   if (!imageFile || imageFile.size === 0) {
     throw new Error("Image file is required.");
   }
@@ -262,6 +264,7 @@ export async function deletePostById(postId) {
 }
 
 export async function deleteImageFromCloudinary(imageUrl) {
+  const cloudinary = await getCloudinary();
   try {
     // public_id'yi URL'den çıkart
     const segments = imageUrl.split("/");

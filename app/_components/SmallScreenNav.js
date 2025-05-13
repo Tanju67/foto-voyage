@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import NavLink from "./NavLink";
 
-function SmallScreenNav() {
+function SmallScreenNav({ user }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
   return (
     <ul>
       <li className={` sm:hidden`}>
@@ -57,15 +59,23 @@ function SmallScreenNav() {
                   About us
                 </Link>
               </li>
-              <li
-                className={`${
-                  pathname.startsWith("/account") ? "text-primary-600" : ""
-                } hover:text-primary-600 transition-all`}
-              >
-                <Link onClick={() => setOpen(false)} href="/account">
-                  User Account
-                </Link>
-              </li>
+
+              {!user && (
+                <NavLink
+                  onClick={() => setOpen(false)}
+                  title="User account"
+                  href="/login"
+                  other={true}
+                />
+              )}
+              {user && (
+                <NavLink
+                  onClick={() => setOpen(false)}
+                  title={user.fullName}
+                  href="/account"
+                  other={true}
+                />
+              )}
             </ul>
           </div>
         </div>
