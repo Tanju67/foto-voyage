@@ -15,7 +15,7 @@ async function MainNavigation() {
         <NavLink title="Home" href="/" />
         <NavLink title="All places" href="/places" other={true} />
         <NavLink title="About us" href="/about" />
-        {!user && <NavLink title="User account" href="/account" other={true} />}
+        {!user && <NavLink title="User account" href="/login" other={true} />}
         {user && (
           <NavLink
             title={user.fullName}
@@ -25,7 +25,7 @@ async function MainNavigation() {
           />
         )}
       </ul>
-      <SmallScreenNav />
+      <SmallScreenNav user={user} />
     </nav>
   );
 }

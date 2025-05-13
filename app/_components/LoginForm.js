@@ -20,7 +20,7 @@ function LoginForm() {
   }, [state, router]);
 
   return (
-    <div className="w-1/2">
+    <div className="w-full lg:w-1/2 ">
       <CustomForm action={formAction}>
         <h2 className="text-center text-3xl">Login</h2>
         <FormInput label={"email"} type={"email"} />

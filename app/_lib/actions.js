@@ -188,6 +188,8 @@ export async function createPostAction(prevState, formData) {
       userId,
     });
 
+    revalidatePath("/account");
+
     return { message: "Post created successfully.", redirectTo: "/account" };
   } catch (error) {
     console.error("createPostAction error:", error);
@@ -226,6 +228,8 @@ export async function updatePostAction(prevState, formData) {
     if (!updatedPost) {
       return { message: "Post not found or update failed." };
     }
+
+    revalidatePath("/account");
 
     return {
       message: "Post updated successfully.",

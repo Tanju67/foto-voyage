@@ -35,14 +35,6 @@ function Footer() {
             >
               <Link href="/about">About us</Link>
             </li>
-            <span>|</span>
-            <li
-              className={`${
-                pathname.startsWith("/account") ? "text-primary-600" : ""
-              } hover:text-primary-600 transition-all`}
-            >
-              <Link href="/account">User Account</Link>
-            </li>
           </ul>
         </nav>
       </div>
